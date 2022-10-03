@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+    <html lang="ru">
+            <head>
+                <title>Крутой эффект</title>
+                <meta charset="utf-8">
+            </head>
+        <body>
+            <canvas>Твой браузер очень слаб:(Обнови до поддерживаемой версии.</canvas>
+        </body>
+
+        <script>
+            const cnv = document.querySelector("canvas");
+            const ctx = cnv.getContext("2d");
+
+            var tick = 0;
+
+            var h = innerHeight;
+            var y = innerWidth;
+
+            cnv.height = innerHeight;
+            cnv.width = innerWidth;
+            animation();
+
+            function animation() {
+                window.requestAnimationFrame(animation);
+                step();
+            }
+            function step() {
+               
+                var rand = Math.floor(Math.random()*4);
+                var randH = Math.floor(Math.random() * y );
+                var randY = Math.floor(Math.random() * h);
+                ctx.fillRect(randH , randY , 30 , 30 );
+
+                var color = {
+                    red:"rgba(158, 22, 22, alpha)",
+                    green:"rgba(40, 158, 22, alpha)",
+                    yellow:"rgba(240, 217, 10, alpha)",
+                    SO : "0.1",
+                    blue:"rgba(28, 31, 243, alpha)"  
+                }
+                
+                switch (rand) {
+                    case 0:
+                         var fillColor = color.red.replace("alpha",color.SO);
+                         ctx.fillStyle = fillColor
+
+                        break;
+                    case 1:
+                        ctx.fillStyle = "rgba(40, 158, 22, 0.1)";
+                        break;
+                    case 2:
+                        ctx.fillStyle  = "rgba(240, 217, 10, 0.1)";
+                        break;
+                    case 3:
+                        ctx.fillStyle = "rgba(28, 31, 243, 0.1)";
+                        break;
+                }
+
+                ctx.fill();
+
+                
+                
+            }
+        </script> 
+    </html>
